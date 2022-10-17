@@ -1,10 +1,8 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Bootcamp {
     private String nome;
@@ -13,7 +11,7 @@ public class Bootcamp {
     private final LocalDate dataFinal = dataInicial.plusDays(45);
     private Set<Dev> devsInscritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
-
+    private Ranking ranking;
 
     public String getNome() {
         return nome;
@@ -45,6 +43,10 @@ public class Bootcamp {
 
     public void setDevsInscritos(Set<Dev> devsInscritos) {
         this.devsInscritos = devsInscritos;
+    }
+
+    public Ranking getRanking(){
+        return new Ranking(new ArrayList<>(devsInscritos));
     }
 
     public Set<Conteudo> getConteudos() {
